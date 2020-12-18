@@ -6,7 +6,7 @@ import {
     Redirect
 } from "react-router-dom";
 import styled from 'styled-components';
-import Nav from "./Nav";
+import Nav from "./components/Nav";
 import Statistics from "./views/Statistics";
 import Bill from "./views/Bill";
 import Tags from "./views/Tags";
@@ -18,15 +18,10 @@ flex-direction: column;
 height:100vh;
 `;
 
-const Main = styled.main`
-flex-grow: 1;
-`;
-
 function App() {
     return (
         <Router>
-        <Wrapper>
-            <Main>
+            <Wrapper>
                 <Switch>
                     <Route path="/tags">
                         <Tags />
@@ -42,10 +37,7 @@ function App() {
                         <NoMatch />
                     </Route>
                 </Switch>
-            </Main>
-            <Nav/>
-
-        </Wrapper>
+            </Wrapper>
         </Router>
 
     );
