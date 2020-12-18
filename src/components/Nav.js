@@ -2,8 +2,8 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 import React from "react";
 
-const NavWrapper=styled.nav`
- > ul{
+const NavWrapper=styled.ul`
+ 
     display: flex;
     justify-content: space-around;
     text-align: center;
@@ -18,33 +18,30 @@ const NavWrapper=styled.nav`
     >svg{
     font-size: 26px;
     }
-    }
+    
  }`;
 
 const Icon=[
-    {name:"标签",}
-]
+    {url:'/tags',name:"标签",link:'#icon-shengdanshu'},
+    {url:'/bill',name:"记账",link:'#icon-SnowMan'},
+    {url:'/statistics',name:"统计",link:'#icon-shengdanlaoren'}
+];
 
 const Nav=()=> {
 return (
     <NavWrapper>
-        <ul>
-            <li>
-                <svg className="icon" aria-hidden="true">
-                    <use xlinkHref="#icon-shengdanshu"></use>
-                </svg>
-                <Link to="/tags">标签</Link>
-            </li>
-            <li> <svg className="icon" aria-hidden="true">
-                <use xlinkHref="#icon-SnowMan"></use>
-            </svg>
-                <Link to="/bill">记账</Link>
-            </li>
-            <li> <svg className="icon" aria-hidden="true">
-                <use xlinkHref="#icon-shengdanlaoren"></use>
-            </svg><Link to="/statistics">统计</Link>
-            </li>
-        </ul>
+            {
+                Icon.map((item)=>{
+                    return (
+                        <li key={item.name}>
+                            <svg className="icon" aria-hidden="true">
+                                <use xlinkHref={item.link}></use>
+                            </svg>
+                            <Link to={item.url}>{item.name}</Link>
+                        </li>
+                    )
+                })
+            }
     </NavWrapper>
 )};
 
