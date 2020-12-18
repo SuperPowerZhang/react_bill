@@ -7,6 +7,10 @@ import {
 } from "react-router-dom";
 import styled from 'styled-components';
 import Nav from "./Nav";
+import Statistics from "./views/Statistics";
+import Bill from "./views/Bill";
+import Tags from "./views/Tags";
+import NoMatch from "./views/NoMatch";
 
 const Wrapper=styled.div`
 display: flex;
@@ -28,7 +32,7 @@ function App() {
                         <Tags />
                     </Route>
                     <Route path="/bill">
-                        <Bill />
+                        < Bill/>
                     </Route>
                     <Route path="/statistics">
                         <Statistics/>
@@ -47,18 +51,4 @@ function App() {
     );
 }
 
-function Statistics() {
-    return <h2>统计页面</h2>;
-}
-
-function Tags() {
-    return <h2>标签页面</h2>;
-}
-
-function Bill() {
-    return <h2>记账页面</h2>;
-}
-function NoMatch(){
-    return <h2>404了，肯定有哪里不对劲</h2>
-}
 export default App;
