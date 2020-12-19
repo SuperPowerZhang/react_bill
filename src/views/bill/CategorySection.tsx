@@ -24,16 +24,20 @@ display: inline-block;
 }}}}
 `;
 
-const CategorySection:React.FC=()=>{
-    const [selectedType,setSelectedType]=useState<string>("支出")
-    const types=["收入","支出"];
+type Props={
+    selectedCategory:string,
+    onChange:(newState:object)=>void
+}
+const CategorySection:React.FC<Props> =(props)=>{
+    const selectedCategory=props.selectedCategory;
+    const onChange=props.onChange;
+    const categories=["收入","支出"];
     return(
         <CategoryWrapper>
             <ul className="bill-type">
-                {types.map(type=>{
-                    return  <li key={type} onClick={()=>{
-                        setSelectedType(type)
-                    }} className={type===selectedType?'selected':''}>{type}</li>
+                {categories.map(category=>{
+                    return  <li key={category} className={category===selectedCategory?'selected':''}
+                                onClick={()=>onChange({selectedCategory:category})} >{category}</li>
                 })}
             </ul>
         </CategoryWrapper>

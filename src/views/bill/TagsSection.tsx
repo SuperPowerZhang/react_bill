@@ -35,22 +35,27 @@ background-color:#fff;
 border-bottom:1px solid #666666;
 }
 `;
-
-const TagsSection: React.FC = () => {
-    const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
-    const [selectedTags, setSelectedTags] = useState<string[]>([]);
+type Props ={
+    tags:string[],
+    selectedTags:string[],
+    onChange:(stateNew:object)=>void
+}
+const TagsSection: React.FC<Props> = (props) => {
+    const tags=props.tags;
+    const selectedTags=props.selectedTags;
+    const onChange=props.onChange;
     const onAddTag = () => {
         const newTag = window.prompt('请输入新标签');
         if (newTag) {
-            setTags([...tags, newTag])
+            onChange({tags:[...tags, newTag]})
         }
     };
     const onToggleTags = (tag: string) => {
-        const index = selectedTags.indexOf(tag)
+        const index = selectedTags.indexOf(tag);
         if (index === -1) {
-            setSelectedTags([...selectedTags, tag])
+            onChange({selectedTags:[...selectedTags, tag]});
         } else {
-            setSelectedTags(selectedTags.filter(t => t !== tag))
+           onChange({selectedTags:selectedTags.filter(t => t !== tag)})
         }
     };
     return (

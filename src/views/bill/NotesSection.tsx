@@ -14,14 +14,17 @@ line-height: 22px;
 margin-left: 20px;
 }
 `;
-
-const NotesSection:React.FC=()=>{
-    const [newNote,setNewNote]=useState<string>("");
+type Props={
+    note:string,
+    onChange:(stateNew:object)=>void
+}
+const NotesSection:React.FC<Props>=(props)=>{
+    const {onChange}=props;
     const inputRef=useRef<HTMLInputElement>(null);
     const getNote=()=>{
         if(inputRef.current){
             const note=inputRef.current.value;
-            setNewNote(note);
+            onChange({note:note})
         }
     };
     return (

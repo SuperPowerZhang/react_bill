@@ -2,17 +2,22 @@ import React, {useState} from "react";
 import {NumWrapper} from './NumWrapper';
 import {GenerateNum} from './GenerateNum';
 
-const NumSection:React.FC=()=>{
-    const [output,setOutPut]=useState<string>("0");
+type Props={
+    output:string,
+    onChange:(stateNew:object)=>void
+}
+
+const NumSection:React.FC<Props> = (props)=>{
+    const output=props.output;
+    const onChange=props.onChange;
     const getNumber=(text:string)=>{
         if(text==='OK'){
             //TODO
             console.log('ok')
         }else{
-            let outputNew=GenerateNum(text,output)||'0';
-            setOutPut(outputNew);
+            onChange({output:GenerateNum(text,output)||'0'});
         }
-    }
+    };
     const numbers:string[]=['1','2','3','删除','4','5','6','清空','7','8','9','OK','0','.'];
     return(
         <NumWrapper>
