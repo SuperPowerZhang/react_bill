@@ -66,8 +66,46 @@ background-color:#A9A9A9;
 const NumSection:React.FC=()=>{
     const [output,setOutPut]=useState<string>("0")
     const getNumber=(e:React.MouseEvent)=>{
-        console.log((e.target as HTMLLIElement).innerText)
-    }
+        let num=(e.target as HTMLLIElement).innerText;
+        console.log(num);
+        switch (num){
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+            case '.':
+                if(output==='0'){
+                    if(num==='.'){
+                        setOutPut(output+num)
+                    }else{
+                        setOutPut(num)
+                    }
+                }else{
+                    setOutPut(output+num)
+                }
+                break;
+            case '删除':
+                if(output.length===1){
+                    setOutPut('0');
+                }else{
+                    setOutPut(output.slice(0,output.length-1));
+                }
+                break;
+            case '清空':
+                setOutPut('0');
+                break;
+            case 'OK':
+                console.log('OK');
+                break;
+        }
+
+    };
     return(
         <NumWrapper>
             <div>
