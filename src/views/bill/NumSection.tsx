@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import React, {useState} from "react";
 
-const NumSection=styled.section`
+const NumWrapper=styled.section`
 display: flex;
 flex-direction: column;
 >div{
@@ -62,5 +63,35 @@ background-color:#A9A9A9;
 }
 }
 `;
-
-export  {NumSection};
+const NumSection:React.FC=()=>{
+    const [output,setOutPut]=useState<string>("0")
+    const getNumber=(e:React.MouseEvent)=>{
+        console.log((e.target as HTMLLIElement).innerText)
+    }
+    return(
+        <NumWrapper>
+            <div>
+                {output}
+            </div >
+            <ul className="bill-num" onClick={(e)=>{
+                getNumber(e)
+            }}>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>删除</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>清空</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>OK</li>
+                <li>0</li>
+                <li>.</li>
+            </ul>
+        </NumWrapper>
+    )
+};
+export {NumSection};

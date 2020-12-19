@@ -20,33 +20,8 @@ function Bill() {
         <MyLayout>
             <TagsSection />
             <NotesSection />
-            <CategorySection>
-                <ul className="bill-type">
-                    <li>收入</li>
-                    <li className="selected">支出</li>
-                </ul>
-            </CategorySection>
-            <NumSection>
-                <div>
-                    100
-                </div >
-                <ul className="bill-num">
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>删除</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>清空</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>OK</li>
-                <li>0</li>
-                <li>.</li>
-                </ul>
-            </NumSection>
+            <CategorySection />
+            <NumSection />
         </MyLayout>
         <Nav/>
         </>

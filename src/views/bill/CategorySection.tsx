@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React, {useState} from "react";
 
 const CategoryWrapper=styled.section`
 >ul{
@@ -24,9 +25,19 @@ display: inline-block;
 `;
 
 const CategorySection:React.FC=()=>{
+    const [selectedType,setSelectedType]=useState<string>("支出")
+    const types=["收入","支出"];
     return(
-        <CategoryWrapper></CategoryWrapper>
+        <CategoryWrapper>
+            <ul className="bill-type">
+                {types.map(type=>{
+                    return  <li key={type} onClick={()=>{
+                        setSelectedType(type)
+                    }} className={type===selectedType?'selected':''}>{type}</li>
+                })}
+            </ul>
+        </CategoryWrapper>
     )
 }
 
-export {};
+export {CategorySection};
