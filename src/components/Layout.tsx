@@ -1,17 +1,19 @@
 import React from "react";
-
+import {ReactElement} from 'react';
 import styled from "styled-components";
 
 
 const Main = styled.main``;
 type Props={
-    children:Element,
-    className:string
+    children: ReactElement | ReactElement []
+    className?:string
 }
 
 function Layout(props:Props) {
     return (
-            <Main className={props.className}>{props.children}</Main>
+            <Main className={props.className}>
+                {props.children}
+            </Main>
     )
 }
 
