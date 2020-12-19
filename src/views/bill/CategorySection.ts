@@ -17,7 +17,7 @@ position: absolute;
 top: 36px;
 left: 0;
 content: "";
-border: 2px solid #333333;
+border-bottom: 2px solid #333333;
 width: 100%;
 display: inline-block;
 }}}}

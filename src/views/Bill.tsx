@@ -19,10 +19,7 @@ function Bill() {
         <>
         <MyLayout>
             <TagsSection />
-            <NotesSection>
-                <span>备注</span>
-                <input type="text" placeholder="在这里添加备注" />
-            </NotesSection>
+            <NotesSection />
             <CategorySection>
                 <ul className="bill-type">
                     <li>收入</li>
