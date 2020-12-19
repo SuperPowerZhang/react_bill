@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const CategorySection=styled.section`
+const CategoryWrapper=styled.section`
 >ul{
 display: flex;
 font-size: 24px;
@@ -22,4 +22,11 @@ width: 100%;
 display: inline-block;
 }}}}
 `;
-export {CategorySection};
+
+const CategorySection:React.FC=()=>{
+    return(
+        <CategoryWrapper></CategoryWrapper>
+    )
+}
+
+export {};
