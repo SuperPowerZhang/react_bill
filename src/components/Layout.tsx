@@ -3,18 +3,15 @@ import React from "react";
 import styled from "styled-components";
 
 
-const Main = styled.main`
-flex-grow: 1;
-display: flex;
-flex-direction: column;
-`;
+const Main = styled.main``;
 type Props={
-children:Element
+    children:Element,
+    className:string
 }
 
 function Layout(props:Props) {
     return (
-            <Main>{props.children}</Main>
+            <Main className={props.className}>{props.children}</Main>
     )
 }
 
