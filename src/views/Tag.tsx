@@ -1,5 +1,5 @@
 import {useParams,useHistory} from 'react-router-dom';
-import {useTags} from "../lib/useTags";
+import {useTags} from "../hooks/useTags";
 import Layout from "../components/Layout";
 import {Center} from "../components/Center";
 import {Button} from "../components/Button";

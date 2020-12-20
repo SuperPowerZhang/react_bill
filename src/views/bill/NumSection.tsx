@@ -3,17 +3,18 @@ import {NumWrapper} from './NumWrapper';
 import {GenerateNum} from './GenerateNum';
 
 type Props={
-    output:string,
-    onChange:(stateNew:string)=>void
+    amount:string,
+    onChange:(stateNew:string)=>void,
+    onOk:()=>void
 }
 
 const NumSection:React.FC<Props> = (props)=>{
-    const output=props.output;
+    const output=props.amount;
     const onChange=props.onChange;
+    const onOk=props.onOk;
     const getNumber=(text:string)=>{
         if(text==='OK'){
-            //TODO
-            console.log('ok')
+            onOk();
         }else{
             onChange(GenerateNum(text,output)||'0');
         }

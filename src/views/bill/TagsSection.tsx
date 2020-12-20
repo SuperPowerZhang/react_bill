@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import {useTags} from 'lib/useTags';
+import {useTags} from 'hooks/useTags';
 
 const TagsWrapper = styled.section`
 display: flex;
@@ -37,12 +37,12 @@ border-bottom:1px solid  black;
 }
 `;
 type Props ={
-    selectedTagIds:number[],
+    tagIds:number[],
     onChange:(stateNew:object)=>void
 }
 const TagsSection: React.FC<Props> = (props) => {
     const {tags,setTags,addTag}=useTags();
-    const selectedTagIds=props.selectedTagIds;
+    const tagIds=props.tagIds;
     const onChange=props.onChange;
     const onAddTag=()=>{
         let newTag=addTag();
@@ -51,12 +51,12 @@ const TagsSection: React.FC<Props> = (props) => {
         }
     };
     const onToggleTags = (id: number) => {
-        const index = selectedTagIds.indexOf(id);
+        const index = tagIds.indexOf(id);
         if (index === -1) {
             //选中的时候存入的是id的数组
-            onChange({selectedTagIds:[...selectedTagIds, id]});
+            onChange({tagIds:[...tagIds, id]});
         } else {
-           onChange({selectedTagIds:selectedTagIds.filter(t => t !== id)});
+           onChange({tagIds:tagIds.filter(t => t !== id)});
         }
     };
     return (
@@ -66,7 +66,7 @@ const TagsSection: React.FC<Props> = (props) => {
                 {tags.map((tag) => {
                     return <li key={tag.id} onClick={() => {
                         onToggleTags(tag.id)
-                    }} className={selectedTagIds.indexOf(tag.id) >= 0 ? 'selected' : ''}>
+                    }} className={tagIds.indexOf(tag.id) >= 0 ? 'selected' : ''}>
                         {tag.name}
                     </li>
                 })}

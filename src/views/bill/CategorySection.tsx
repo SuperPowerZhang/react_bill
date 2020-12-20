@@ -25,13 +25,13 @@ display: inline-block;
 `;
 
 type Props={
-    selectedCategory:string,
-    onChange:(selectedCategory:string)=>void
+    category:"收入"|"支出",
+    onChange:(category:"收入"|"支出")=>void
 }
 const CategorySection:React.FC<Props> =(props)=>{
-    const selectedCategory=props.selectedCategory;
+    const selectedCategory=props.category;
     const onChange=props.onChange;
-    const categories=["收入","支出"];
+    const categories:("收入"|"支出")[]=["收入","支出"];
     return(
         <CategoryWrapper>
             <ul className="bill-type">
