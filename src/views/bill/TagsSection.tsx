@@ -8,6 +8,7 @@ flex-grow: 1;
 flex-direction: column;
 font-size: 14px;
 padding: 20px 20px 12px 20px;
+background-color:rgb(255, 255, 255);
 >div{
 flex-grow: 1;
 }
@@ -29,9 +30,10 @@ background-color: rgb(184, 225, 222);
 width: 56px;
 display: inline-block;
 margin-top: 20px;
+padding-bottom: 5px;
 color: #999999;
 background-color:#fff;
-border-bottom:1px solid #666666;
+border-bottom:1px solid  black;
 }
 `;
 type Props ={

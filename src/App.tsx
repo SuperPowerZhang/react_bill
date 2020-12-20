@@ -10,11 +10,13 @@ import Statistics from "./views/Statistics";
 import Bill from "./views/Bill";
 import Tags from "./views/Tags";
 import NoMatch from "./views/NoMatch";
+import {Tag} from "./Tag";
 
 const Wrapper=styled.div`
 display: flex;
 flex-direction: column;
 height:100vh;
+background-color:rgb(245, 245, 245);
 `;
 
 function App() {
@@ -22,13 +24,16 @@ function App() {
         <Router>
             <Wrapper>
                 <Switch>
-                    <Route path="/tags">
+                    <Route exact path="/tags">
                         <Tags />
                     </Route>
-                    <Route path="/bill">
+                    <Route exact path="/tags/:tag">
+                        <Tag />
+                    </Route>
+                    <Route exact path="/bill">
                         < Bill/>
                     </Route>
-                    <Route path="/statistics">
+                    <Route exact path="/statistics">
                         <Statistics/>
                     </Route>
                     <Redirect exact from="/" to="/bill" />
