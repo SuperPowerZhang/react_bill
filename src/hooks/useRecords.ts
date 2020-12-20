@@ -8,12 +8,12 @@ type RecordItem={
     note:string,
     category:"收入"|"支出",
     amount:number
+    createDate:string //ISO 8601
 }
 
 export const useRecords=()=>{
     const [records,setRecords]=useState<RecordItem[]>([]);
     const addRecord=(newRecord:RecordItem)=>{
-        console.log(typeof newRecord.amount);
         setRecords([...records,newRecord])
     };
     useUpdate(()=>{
