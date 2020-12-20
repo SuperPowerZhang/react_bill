@@ -28,7 +28,8 @@ function Bill() {
         selectedCategory:"支出",
         output:'0'
     });
-    const onChange=(obj:object)=>{
+    type State=typeof state;
+    const onChange=(obj:Partial<State>)=>{
         setState({...state,...obj})
     };
     return (
@@ -37,11 +38,11 @@ function Bill() {
             <TagsSection tags={state.tags} selectedTags={state.selectedTags}
                          onChange={(stateNew)=>{onChange(stateNew)}} />
             <NotesSection note={state.note}
-                          onChange={(stateNew)=>{onChange(stateNew)}}/>
+                          onChange={(note)=>{onChange({note})}}/>
             <CategorySection selectedCategory={state.selectedCategory}
-                             onChange={(stateNew)=>{onChange(stateNew)}}/>
+                             onChange={(selectedCategory)=>{onChange({selectedCategory})}}/>
             <NumSection output={state.output}
-                        onChange={(stateNew)=>{onChange(stateNew)}}/>
+                        onChange={(output)=>{onChange({output})}} />
         </MyLayout>
         <Nav/>
         </>

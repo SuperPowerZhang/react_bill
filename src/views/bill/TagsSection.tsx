@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React, {useState} from "react";
+import {State} from "jest-circus";
 
 const TagsWrapper = styled.section`
 display: flex;
@@ -55,7 +56,7 @@ const TagsSection: React.FC<Props> = (props) => {
         if (index === -1) {
             onChange({selectedTags:[...selectedTags, tag]});
         } else {
-           onChange({selectedTags:selectedTags.filter(t => t !== tag)})
+           onChange({selectedTags:selectedTags.filter(t => t !== tag)});
         }
     };
     return (

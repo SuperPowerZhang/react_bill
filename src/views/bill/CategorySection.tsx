@@ -26,7 +26,7 @@ display: inline-block;
 
 type Props={
     selectedCategory:string,
-    onChange:(newState:object)=>void
+    onChange:(selectedCategory:string)=>void
 }
 const CategorySection:React.FC<Props> =(props)=>{
     const selectedCategory=props.selectedCategory;
@@ -37,7 +37,7 @@ const CategorySection:React.FC<Props> =(props)=>{
             <ul className="bill-type">
                 {categories.map(category=>{
                     return  <li key={category} className={category===selectedCategory?'selected':''}
-                                onClick={()=>onChange({selectedCategory:category})} >{category}</li>
+                                onClick={()=>onChange(category)} >{category}</li>
                 })}
             </ul>
         </CategoryWrapper>

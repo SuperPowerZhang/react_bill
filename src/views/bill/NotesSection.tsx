@@ -16,7 +16,7 @@ margin-left: 20px;
 `;
 type Props={
     note:string,
-    onChange:(stateNew:object)=>void
+    onChange:(note:string)=>void
 }
 const NotesSection:React.FC<Props>=(props)=>{
     const {onChange}=props;
@@ -24,7 +24,7 @@ const NotesSection:React.FC<Props>=(props)=>{
     const getNote=()=>{
         if(inputRef.current){
             const note=inputRef.current.value;
-            onChange({note:note})
+            onChange(note)
         }
     };
     return (

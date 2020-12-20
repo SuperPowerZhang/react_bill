@@ -4,7 +4,7 @@ import {GenerateNum} from './GenerateNum';
 
 type Props={
     output:string,
-    onChange:(stateNew:object)=>void
+    onChange:(stateNew:string)=>void
 }
 
 const NumSection:React.FC<Props> = (props)=>{
@@ -15,7 +15,7 @@ const NumSection:React.FC<Props> = (props)=>{
             //TODO
             console.log('ok')
         }else{
-            onChange({output:GenerateNum(text,output)||'0'});
+            onChange(GenerateNum(text,output)||'0');
         }
     };
     const numbers:string[]=['1','2','3','删除','4','5','6','清空','7','8','9','OK','0','.'];
