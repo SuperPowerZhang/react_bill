@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
-import {useTags} from './common/useTags'
+import {useTags} from '../lib/useTags'
 import styled from "styled-components";
 import {Center} from '../components/Center';
 import {Link} from "react-router-dom";
@@ -50,7 +50,7 @@ function Tags() {
                             <li key={tag.id}>
                                 <Link to={'/tags/'+tag.id}>
                                 <span>
-                                    {tag.name}
+                                    {tag.id}:{tag.name}
                                 </span>
                                 <svg className="icon" aria-hidden="true">
                                     <use xlinkHref="#icon-jiantouyou"></use>

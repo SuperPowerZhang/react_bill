@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from "react";
-import {useTags} from '../common/useTags'
+import {useTags} from 'lib/useTags'
+import {createId} from "lib/createId";
 
 const TagsWrapper = styled.section`
 display: flex;
@@ -48,7 +49,7 @@ const TagsSection: React.FC<Props> = (props) => {
         const newTagName=window.prompt('请输入新标签');
         if (newTagName) {
             //TODO id是随机生成的
-            const newTag ={id:Math.random(),name: newTagName};
+            const newTag ={id:createId(),name: newTagName};
             setTags([...tags, newTag])
         }
     };
