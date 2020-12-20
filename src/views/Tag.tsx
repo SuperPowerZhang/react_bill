@@ -45,7 +45,6 @@ const Tag:React.FC=()=>{
     const saveTag=()=>{
         if(tagRef.current){
             updateTag(parseInt(id),tagRef.current.value);
-            console.log(tagRef.current.value)
         }
     };
     const onDeleteTag=()=>{
