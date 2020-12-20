@@ -25,5 +25,5 @@ export const useRecords=()=>{
             setRecords(recordsLocal);
         }
     },[]);
-    return {addRecord}
+    return {records,setRecords,addRecord}
 };
