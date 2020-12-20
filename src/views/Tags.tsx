@@ -5,6 +5,7 @@ import styled from "styled-components";
 import {Center} from '../components/Center';
 import {Link} from "react-router-dom";
 import Nav from "../components/Nav";
+import {createId} from "../lib/createId";
 
 const TagList=styled.ul`
 background-color:rgb(255, 255, 255);
@@ -42,6 +43,12 @@ flex-grow: 1;
 
 function Tags() {
     const {tags,setTags}=useTags();
+    const addTag=()=>{
+        let newTagName=window.prompt("请输入新的标签名");
+        if(newTagName){
+            setTags([...tags,{id:createId(),name:newTagName}])
+        }
+    };
     return(
             <MyLayout>
                 <TagList>
@@ -50,6 +57,7 @@ function Tags() {
                             <li key={tag.id}>
                                 <Link to={'/tags/'+tag.id}>
                                 <span>
+                                    //TODO id暂时先显示方便查错，后续删除
                                     {tag.id}:{tag.name}
                                 </span>
                                 <svg className="icon" aria-hidden="true">
@@ -60,7 +68,7 @@ function Tags() {
                     })}
                 </TagList>
                 <Center>
-                    <Button>新建标签</Button>
+                    <Button onClick={addTag}>新建标签</Button>
                 </Center>
                 <Nav/>
             </MyLayout>
