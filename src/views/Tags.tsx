@@ -5,8 +5,8 @@ import styled from "styled-components";
 import {Center} from '../components/Center';
 import {Link} from "react-router-dom";
 import Nav from "../components/Nav";
-import {createId} from "../lib/createId";
 import {addTag} from "../lib/addTag";
+import {Button} from '../components/Button';
 
 const TagList=styled.ul`
 background-color:rgb(255, 255, 255);
@@ -23,14 +23,6 @@ white-space: nowrap;
 margin-right: 5px;
 }
 }
-`;
-const Button=styled.button`
-background: #767676;
-padding: 8px 16px;
-font-size: 17px;
-border-radius: 4px;
-color: #FFFFFF;
-text-align: center;
 `;
 const MyLayout=styled(Layout)`
 height: 100vh;
