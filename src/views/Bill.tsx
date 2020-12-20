@@ -13,16 +13,8 @@ flex-grow: 1;
 display: flex;
 flex-direction: column;
 `;
-type State={
-    tags:string[],
-    selectedTags:string[],
-    newNote:string,
-    selectedCategory:string,
-    output:number
-}
 function Bill() {
     const [state,setState]=useState({
-        tags:['衣', '食', '住', '行'],
         selectedTags:[],
         note:"",
         selectedCategory:"支出",
@@ -35,7 +27,7 @@ function Bill() {
     return (
         <>
         <MyLayout >
-            <TagsSection tags={state.tags} selectedTags={state.selectedTags}
+            <TagsSection selectedTags={state.selectedTags}
                          onChange={(stateNew)=>{onChange(stateNew)}} />
             <NotesSection note={state.note}
                           onChange={(note)=>{onChange({note})}}/>

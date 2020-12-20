@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import React, {useState} from "react";
-import {State} from "jest-circus";
+import React from "react";
+import {useTags} from '../common/useTags'
 
 const TagsWrapper = styled.section`
 display: flex;
@@ -24,9 +24,7 @@ margin-right:15px ;
 margin-bottom: 5px;
 &.selected{
 background-color: rgb(184, 225, 222);
-}
-}
-}
+}}}
 >button{
 width: 56px;
 display: inline-block;
@@ -37,18 +35,17 @@ border-bottom:1px solid #666666;
 }
 `;
 type Props ={
-    tags:string[],
     selectedTags:string[],
     onChange:(stateNew:object)=>void
 }
 const TagsSection: React.FC<Props> = (props) => {
-    const tags=props.tags;
+    const {tags,setTags}=useTags();
     const selectedTags=props.selectedTags;
     const onChange=props.onChange;
     const onAddTag = () => {
         const newTag = window.prompt('请输入新标签');
         if (newTag) {
-            onChange({tags:[...tags, newTag]})
+            setTags([...tags, newTag])
         }
     };
     const onToggleTags = (tag: string) => {
