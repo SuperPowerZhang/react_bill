@@ -15,7 +15,7 @@ flex-direction: column;
 `;
 function Bill() {
     const [state,setState]=useState({
-        selectedTags:[],
+        selectedTagIds:[],
         note:"",
         selectedCategory:"支出",
         output:'0'
@@ -27,7 +27,7 @@ function Bill() {
     return (
         <>
         <MyLayout >
-            <TagsSection selectedTags={state.selectedTags}
+            <TagsSection selectedTagIds={state.selectedTagIds}
                          onChange={(stateNew)=>{onChange(stateNew)}} />
             <NotesSection note={state.note}
                           onChange={(note)=>{onChange({note})}}/>

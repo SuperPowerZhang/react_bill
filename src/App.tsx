@@ -10,7 +10,7 @@ import Statistics from "./views/Statistics";
 import Bill from "./views/Bill";
 import Tags from "./views/Tags";
 import NoMatch from "./views/NoMatch";
-import {Tag} from "./Tag";
+import {Tag} from "./views/Tag";
 
 const Wrapper=styled.div`
 display: flex;
@@ -27,8 +27,8 @@ function App() {
                     <Route exact path="/tags">
                         <Tags />
                     </Route>
-                    <Route exact path="/tags/:tag">
-                        <Tag />
+                    <Route exact path="/tags/:id">
+                        <Tag  />
                     </Route>
                     <Route exact path="/bill">
                         < Bill/>

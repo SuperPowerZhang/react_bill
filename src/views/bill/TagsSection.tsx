@@ -37,25 +37,28 @@ border-bottom:1px solid  black;
 }
 `;
 type Props ={
-    selectedTags:string[],
+    selectedTagIds:number[],
     onChange:(stateNew:object)=>void
 }
 const TagsSection: React.FC<Props> = (props) => {
     const {tags,setTags}=useTags();
-    const selectedTags=props.selectedTags;
+    const selectedTagIds=props.selectedTagIds;
     const onChange=props.onChange;
     const onAddTag = () => {
-        const newTag = window.prompt('请输入新标签');
-        if (newTag) {
+        const newTagName=window.prompt('请输入新标签');
+        if (newTagName) {
+            //TODO id是随机生成的
+            const newTag ={id:Math.random(),name: newTagName};
             setTags([...tags, newTag])
         }
     };
-    const onToggleTags = (tag: string) => {
-        const index = selectedTags.indexOf(tag);
+    const onToggleTags = (id: number) => {
+        const index = selectedTagIds.indexOf(id);
         if (index === -1) {
-            onChange({selectedTags:[...selectedTags, tag]});
+            //选中的时候存入的是id的数组
+            onChange({selectedTagIds:[...selectedTagIds, id]});
         } else {
-           onChange({selectedTags:selectedTags.filter(t => t !== tag)});
+           onChange({selectedTagIds:selectedTagIds.filter(t => t !== id)});
         }
     };
     return (
@@ -63,10 +66,10 @@ const TagsSection: React.FC<Props> = (props) => {
             <div>占个位子</div>
             <ul>
                 {tags.map((tag) => {
-                    return <li key={tag} onClick={() => {
-                        onToggleTags(tag)
-                    }} className={selectedTags.indexOf(tag) >= 0 ? 'selected' : ''}>
-                        {tag}
+                    return <li key={tag.id} onClick={() => {
+                        onToggleTags(tag.id)
+                    }} className={selectedTagIds.indexOf(tag.id) >= 0 ? 'selected' : ''}>
+                        {tag.name}
                     </li>
                 })}
             </ul>
