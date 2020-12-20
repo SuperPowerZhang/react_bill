@@ -29,9 +29,6 @@ height: 100vh;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
->Center{
-flex-grow: 1;
-}
 `;
 
 function Tags() {

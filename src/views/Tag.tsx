@@ -1,11 +1,11 @@
-import {useParams} from 'react-router-dom';
+import {useParams,useHistory} from 'react-router-dom';
 import {useTags} from "../lib/useTags";
 import Layout from "../components/Layout";
 import {Center} from "../components/Center";
 import {Button} from "../components/Button";
 import Nav from "../components/Nav";
 import styled from "styled-components";
-import React from "react";
+import React, {useRef} from "react";
 
 type Params={
     id:string
@@ -30,29 +30,58 @@ padding: 16px;
 font-size: 16px;
 }
 `;
-
+const MyLayout=styled(Layout)`
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+`;
 const Tag:React.FC=()=>{
     let {id}=useParams<Params>();
-    let {findTag}=useTags();
+    let {findTag,updateTag,deleteTag}=useTags();
     const tag=findTag(parseInt(id));
+    const tagRef=useRef<HTMLInputElement>(null);
+    const history=useHistory();
+    const saveTag=()=>{
+        if(tagRef.current){
+            updateTag(parseInt(id),tagRef.current.value);
+            console.log(tagRef.current.value)
+        }
+    };
+    const onDeleteTag=()=>{
+        deleteTag(parseInt(id));
+    };
+    const onClickBack=()=>{
+        history.push("/tags")
+    };
     return (
-        <Layout>
+        <MyLayout>
             <TitleDiv className="edit">
-                <svg className="icon" aria-hidden="true">
+                <svg className="icon" aria-hidden="true" onClick={onClickBack}>
                     <use xlinkHref="#icon-jiantouzuo"></use>
                 </svg>
                 <span>编辑标签</span>
             </TitleDiv>
-            <EditDiv>
-                <span>标签名 </span>
-                <input type="text" placeholder={tag.name} />
-            </EditDiv>
-            <Center>
-                <Button className="save">保存修改</Button>
-                <Button>删除标签</Button>
-            </Center>
+            {
+                tag?
+                    <>
+                        <EditDiv>
+                        <span>标签名 </span>
+                        <input ref={tagRef} type="text" placeholder={tag.name} />
+                    </EditDiv>
+                    <Center>
+                        <Button onClick={saveTag} className="save">保存修改</Button>
+                        <Button onClick={onDeleteTag}>删除标签</Button>
+                    </Center>
+                </>
+                    :
+                    <Center>
+                        标签不存在了ToT~
+                    </Center>
+            }
+
             <Nav/>
-        </Layout>
+        </MyLayout>
     )
 }
 export {Tag}

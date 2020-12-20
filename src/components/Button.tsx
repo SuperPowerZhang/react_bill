@@ -9,6 +9,7 @@ color: #FFFFFF;
 text-align: center;
 &.save{
 background-color:rgb(184, 225, 222);
+color:rgb(51, 51, 51);
 }
 `;
 export {Button};
