@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import {useTags} from 'lib/useTags'
-import {createId} from "lib/createId";
-import {addTag} from "../../lib/addTag";
+import {useTags} from 'lib/useTags';
 
 const TagsWrapper = styled.section`
 display: flex;
@@ -43,7 +41,7 @@ type Props ={
     onChange:(stateNew:object)=>void
 }
 const TagsSection: React.FC<Props> = (props) => {
-    const {tags,setTags}=useTags();
+    const {tags,setTags,addTag}=useTags();
     const selectedTagIds=props.selectedTagIds;
     const onChange=props.onChange;
     const onAddTag=()=>{

@@ -12,6 +12,14 @@ const defaultTags=[
     ];
 const useTags = ()=>{
     const [tags,setTags]=useState<Tag[]>(defaultTags);
+    const addTag=():Tag=>{
+        const newTagName=window.prompt('请输入新标签');
+        if (newTagName) {
+            return {id:createId(),name: newTagName};
+        }else{
+            return{ id:-1,name:''}
+        }
+    }
     const findTag=(id:number)=>{
         return tags.filter(tag=> tag.id===id)[0];
     };
@@ -25,7 +33,7 @@ const useTags = ()=>{
         setTags(tags.filter(tag=>tag.id!==id))
     };
     return(
-        {tags,setTags,findTag,updateTag,deleteTag}
+        {tags,setTags,findTag,updateTag,deleteTag,addTag}
     );
 
 };

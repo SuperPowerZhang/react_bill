@@ -5,7 +5,6 @@ import styled from "styled-components";
 import {Center} from '../components/Center';
 import {Link} from "react-router-dom";
 import Nav from "../components/Nav";
-import {addTag} from "../lib/addTag";
 import {Button} from '../components/Button';
 
 const TagList=styled.ul`
@@ -32,7 +31,7 @@ justify-content: space-between;
 `;
 
 function Tags() {
-    const {tags,setTags}=useTags();
+    const {tags,setTags,addTag}=useTags();
     const onAddTag=()=>{
             let newTag=addTag();
             if(newTag.id!==-1){
@@ -58,7 +57,7 @@ function Tags() {
                     })}
                 </TagList>
                 <Center>
-                    <Button onClick={onAddTag}>新建标签</Button>
+                    <Button onClick={onAddTag} className="save">新增标签</Button>
                 </Center>
                 <Nav/>
             </MyLayout>
