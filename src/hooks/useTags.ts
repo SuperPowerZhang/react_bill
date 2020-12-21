@@ -36,7 +36,7 @@ const useTags = ()=>{
         }
     };
     const findTag=(id:number)=>{
-        return tags.filter(tag=> tag.id===id)[0];
+        return tags.filter(tag=> tag.id===id)[0]||{name:"<空>"}
     };
     const updateTag=(id:number,newName:string)=>{
         if(newName){
