@@ -54,7 +54,7 @@ function Statistics() {
     };
     const recordsDisplay=records.filter(record=>record.category===category);
     const hash:{[key:string]:RecordItem[]}={};
-    recordsDisplay.map((record)=>{
+    recordsDisplay.forEach((record)=>{
         const key=day(record.createDate).format("YYYY-MM-DD");
         if(!(key in hash)){
             hash[key]=[];
