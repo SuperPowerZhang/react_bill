@@ -26,6 +26,9 @@ const defaultState:RecordItemString={
     category:"支出",
     amount:'0'
 };
+const CategoryWrapper=styled.section`
+background-color:rgb(196, 196, 196);
+`;
 function Bill() {
     const [state,setState]=useState<RecordItemString>(defaultState);
     const {addRecord}=useRecords();
@@ -52,8 +55,10 @@ function Bill() {
                          onChange={(stateNew)=>{onChange(stateNew)}} />
             <NotesSection note={state.note}
                           onChange={(note)=>{onChange({note})}}/>
-            <CategorySection category={state.category}
-                             onChange={(category)=>{onChange({category})}}/>
+            <CategoryWrapper>
+                <CategorySection category={state.category}
+                                 onChange={(category)=>{onChange({category})}}/>
+            </CategoryWrapper>
             <NumSection amount={state.amount}
                         onChange={(amount)=>{onChange({amount})}}
                         onOk={onSubmit}/>
