@@ -81,7 +81,7 @@ function Statistics() {
                     <RecordsList>
                     {records.map((record)=>{
                         return <li key={record.createDate}>
-                            <span>{record.tagIds.map((id)=>{return " "+findTag(id).name})}</span>
+                            <span className="one-line">{record.tagIds.map((id)=>{return " "+findTag(id).name})}</span>
                             <span className="note">{record.note}</span>
                             <span>￥{record.amount}</span>
                         </li>

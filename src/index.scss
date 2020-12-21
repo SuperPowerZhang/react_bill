@@ -61,3 +61,10 @@ ul,ol,li{
   fill: currentColor;
   overflow: hidden;
 }
+
+.one-line{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 5px;
+}

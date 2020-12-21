@@ -15,12 +15,6 @@ justify-content:space-between ;
 font-size: 16px;
 padding: 11px 15px;
 border-bottom: 1px solid rgb(221, 221, 224);
->span{
-overflow: hidden; 
-text-overflow: ellipsis; 
-white-space: nowrap; 
-margin-right: 5px;
-}
 }
 `;
 const MyLayout=styled(Layout)`
@@ -45,9 +39,8 @@ function Tags() {
                         return (
                             <li key={tag.id}>
                                 <Link to={'/tags/'+tag.id}>
-                                <span>
-                                    {/*//TODO id暂时先显示方便查错，后续删除*/}
-                                    {tag.id}:{tag.name}
+                                <span className="one-line">
+                                 {tag.name}
                                 </span>
                                 <svg className="icon" aria-hidden="true">
                                     <use xlinkHref="#icon-jiantouyou"></use>
