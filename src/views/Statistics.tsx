@@ -15,7 +15,7 @@ background-color:#fff;
 `;
 const List=styled.div`
 margin-bottom:auto;
->header{
+>div header{
 background: #f5f5f5;
 padding:10px 16px;
 line-height: 20px;
@@ -76,7 +76,7 @@ function Statistics() {
             </CategoryWrapper>
             <List>
             {array.map(([date,records])=>{
-                return (<>
+                return (<div key={date}>
                     <header >{date}</header>
                     <RecordsList>
                     {records.map((record)=>{
@@ -86,7 +86,7 @@ function Statistics() {
                             <span>￥{record.amount}</span>
                         </li>
                     })}</RecordsList>
-                    </>
+                    </div>
                 )
             })}
             </List>
