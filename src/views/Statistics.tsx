@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import styled from "styled-components";
 import {useRecords} from "../hooks/useRecords";
 import {CategorySection} from "./bill/CategorySection";
-import day from "dayjs";
+// import day from "dayjs";
 import {useTags} from "../hooks/useTags";
 
 const MyLayout=styled(Layout)`
@@ -14,10 +14,22 @@ const CategoryWrapper=styled.div`
 background-color:#fff;
 `
 const RecordsList=styled.ul`
+margin-bottom:auto;
 >li{
 display: flex;
 justify-content: space-between;
-border: 1px solid red;
+padding:10px 16px;
+line-height: 20px;
+font-size: 16px;
+background: #FFFFFF;
+&.title{
+background: #f5f5f5;
+}
+>.note{
+margin-left: 10px;
+margin-right: auto;
+color: #999999;
+}
 }
 `;
 
@@ -29,7 +41,6 @@ function Statistics() {
         setCategory(category)
     };
     const {findTag}=useTags();
-
     return (
         <>
         <MyLayout>
@@ -37,18 +48,22 @@ function Statistics() {
                 <CategorySection category={category}  onChange={changeCategory}/>
             </CategoryWrapper>
             <RecordsList>
-                {records.map((record)=>{
-                    if(record.category==='支出'){
-                        return <li key={record.createDate}>
+                <li className="title">
+                    <span>今天</span>
+                    <span>￥1000</span>
+                </li>
+                {records.filter(record=>record.category===category)
+                        .map((record)=>{
+                            return <li key={record.createDate}>
                             <span>
                                 {record.tagIds.map((id)=>{
                             return " "+findTag(id).name
-                        })}
+                                })}
                             </span>
-                            <span>{record.amount}</span>
-                            <span>{day(record.createDate).format("YYYY-MM-DD")}</span>
+                            <span className="note">{record.note}</span>
+                            <span>￥{record.amount}</span>
+
                             </li>
-                    }
                 })}
             </RecordsList>
             <Nav/>
