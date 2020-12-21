@@ -15,6 +15,8 @@ background-color:#fff;
 `;
 const List=styled.div`
 margin-bottom:auto;
+flex-grow: 1;
+ overflow:auto;
 >div header{
 background: #f5f5f5;
 padding:10px 16px;

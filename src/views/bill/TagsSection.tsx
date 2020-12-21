@@ -4,18 +4,16 @@ import {useTags} from 'hooks/useTags';
 
 const TagsWrapper = styled.section`
 display: flex;
-flex-grow: 1;
 flex-direction: column;
 font-size: 14px;
 padding: 20px 20px 12px 20px;
 background-color:rgb(255, 255, 255);
->div{
-flex-grow: 1;
-}
 >ul{
 display: flex;
 justify-content: flex-start;
 flex-wrap: wrap;
+flex-shrink: 1;
+overflow-y: scroll;
 >li{
 color: #484848;
 padding: 4px 16px;
@@ -61,7 +59,6 @@ const TagsSection: React.FC<Props> = (props) => {
     };
     return (
         <TagsWrapper>
-            <div>占个位子</div>
             <ul>
                 {tags.map((tag) => {
                     return <li key={tag.id} onClick={() => {

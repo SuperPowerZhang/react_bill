@@ -9,8 +9,8 @@ import {NumSection} from './bill/NumSection';
 import {useRecords} from "../hooks/useRecords";
 
 //神奇的styled用法
-const MyLayout=styled(Layout)`
-flex-grow: 1;
+const Wrapper=styled.div`
+height: 100vh;
 display: flex;
 flex-direction: column;
 `;
@@ -49,8 +49,8 @@ function Bill() {
         setState(defaultState);
     };
     return (
-        <>
-        <MyLayout >
+        <Wrapper id="12345">
+        <Layout >
             <TagsSection tagIds={state.tagIds}
                          onChange={(stateNew)=>{onChange(stateNew)}} />
             <NotesSection note={state.note}
@@ -62,9 +62,9 @@ function Bill() {
             <NumSection amount={state.amount}
                         onChange={(amount)=>{onChange({amount})}}
                         onOk={onSubmit}/>
-        </MyLayout>
+        </Layout>
         <Nav/>
-        </>
+        </Wrapper>
     )
 }
 export  default Bill;
