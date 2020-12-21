@@ -6,7 +6,7 @@ const Main = styled.main`
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-flex-shrink: 1;
+flex: 1;
 `;
 type Props={
     children: ReactElement | ReactElement []

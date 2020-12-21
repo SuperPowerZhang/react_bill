@@ -8,16 +8,17 @@ flex-direction: column;
 font-size: 14px;
 padding: 20px 20px 12px 20px;
 background-color:rgb(255, 255, 255);
+flex:1;
 >ul{
 display: flex;
 justify-content: flex-start;
 flex-wrap: wrap;
-flex-shrink: 1;
 overflow-y: scroll;
 >li{
 color: #484848;
 padding: 4px 16px;
 border-radius: 18px;
+line-height: 20px;
 background: #D9D9D9;
 margin-right:15px ;
 margin-bottom: 5px;

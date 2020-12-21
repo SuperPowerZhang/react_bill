@@ -8,7 +8,10 @@ import Nav from "../components/Nav";
 import {Button} from '../components/Button';
 
 const TagList=styled.ul`
+flex-shrink: 1;
 background-color:rgb(255, 255, 255);
+overflow:auto;
+
 >li a{
 display: flex;
 justify-content:space-between ;

@@ -13,6 +13,7 @@ const Wrapper=styled.div`
 height: 100vh;
 display: flex;
 flex-direction: column;
+justify-content: space-between;
 `;
 type RecordItemString={
     tagIds:number[],
@@ -49,7 +50,7 @@ function Bill() {
         setState(defaultState);
     };
     return (
-        <Wrapper id="12345">
+        <Wrapper >
         <Layout >
             <TagsSection tagIds={state.tagIds}
                          onChange={(stateNew)=>{onChange(stateNew)}} />

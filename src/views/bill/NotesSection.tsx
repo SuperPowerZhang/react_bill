@@ -5,6 +5,7 @@ const NotesWrapper=styled.section`
 display: flex;
 justify-content: flex-start;
 padding: 20px;
+flex:0;
 background-color:rgb(245, 245, 245);
 >span{
 color:#333333;

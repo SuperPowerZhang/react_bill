@@ -2,6 +2,7 @@
   "name": "react-bill",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://SuperPowerZhang.github.io/react_bill_website/",
   "dependencies": {
     "@babel/core": "7.12.3",
     "@emotion/memoize": "^0.7.5",
