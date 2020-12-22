@@ -9,4 +9,4 @@ git remote add gitee git@gitee.com:tammiezhang/react_bill_website.git &&
 git push -u -f gitee master &&
 cd .. &&
 echo https://github.com/SuperPowerZhang/react_bill_website
-echo
+echo https://gitee.com/tammiezhang/react_bill_website/pages
