@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, {useRef} from "react";
 
+
 const NotesWrapper=styled.section`
 display: flex;
 justify-content: flex-start;
