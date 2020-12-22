@@ -1,0 +1,70 @@
+@import-normalize;
+@import "helper.scss";
+
+HTML, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote,
+pre, form, fieldset, table, th, td ,button,input{
+  border:none;
+  margin:0;
+  padding:0;
+}
+ html {
+    font-family: $font-base;
+    line-height: 1.2;
+  };
+
+html,body{
+  height: 100%;
+  width: 100%;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  font-weight: normal;
+}
+a{
+  text-decoration:none;
+}
+a:link{
+  color:inherit;
+}
+a:visited{
+  color:inherit;
+}
+a:hover{
+  color:inherit;
+}
+a:active{
+  color:inherit;
+}
+
+input,button{
+  background-color: inherit;
+  outline: none;
+}
+
+input[type=submit],input[type=button]{
+  cursor: pointer;
+}
+button[disabled], input[disabled] {
+  cursor: default;
+}
+img{
+  border:none;
+}
+ul,ol,li{
+  list-style-type:none;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.one-line{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 5px;
+}
