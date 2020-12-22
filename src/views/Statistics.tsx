@@ -6,6 +6,8 @@ import {useRecords} from "../hooks/useRecords";
 import {CategorySection} from "./bill/CategorySection";
 import day from "dayjs";
 import {useTags} from "../hooks/useTags";
+import {Tag} from "antd";
+import {colorInit} from "./colorInit";
 
 const MyLayout=styled(Layout)`
 height: 100vh;
@@ -32,10 +34,14 @@ padding:10px 16px;
 line-height: 20px;
 font-size: 16px;
 background: #FFFFFF;
+>span span{
+font-size: 14px;
+}
 >.note{
 margin-left: 10px;
 margin-right: auto;
 color: #999999;
+font-size: 14px;
 }
 }
 `;
@@ -65,8 +71,8 @@ function Statistics() {
     });
     const array=Object.entries(hash).sort((a,b)=>{
         if(a[0]===b[0]){            return 0;        }
-        else if(a[0]>b[0]){         return 1;        }
-        else if(a[0]<b[0]){         return -1;       }
+        else if(a[0]>b[0]){         return -1;        }
+        else if(a[0]<b[0]){         return 1;       }
         else{                       return 0;        }
     });
     const {findTag}=useTags();
@@ -83,7 +89,9 @@ function Statistics() {
                     <RecordsList>
                     {records.map((record)=>{
                         return <li key={record.createDate}>
-                            <span className="one-line">{record.tagIds.map((id)=>{return " "+findTag(id).name})}</span>
+                            <span className="one-line">{record.tagIds.map((id)=>{
+                                return   <Tag key={id} color={colorInit[id%colorInit.length]}>{findTag(id).name}</Tag>
+                            })}</span>
                             <span className="note">{record.note}</span>
                             <span>￥{record.amount}</span>
                         </li>

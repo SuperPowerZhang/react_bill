@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import React from "react";
 import {useTags} from '../../hooks/useTags';
-
+import { Tag } from 'antd';
+import {colorInit} from "../colorInit";
 
 const TagsWrapper = styled.section`
 display: flex;
@@ -15,25 +16,41 @@ display: flex;
 justify-content: flex-start;
 flex-wrap: wrap;
 overflow-y: scroll;
->li{
-color: #484848;
+>li {
+> span{
+position: relative;
 padding: 4px 16px;
 border-radius: 18px;
 line-height: 20px;
-background: #D9D9D9;
+//background: #D9D9D9;
 margin-right:15px ;
 margin-bottom: 5px;
-&.selected{
-background-color: rgb(184, 225, 222);
-}}}
+&::after{
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border-radius: 18px;
+background-color:rgba(0,0,0,0.25);
+}}
+&.selected {
+>span::after{
+display: none;
+//background-color:transparent;
+}
+}
+}}
 >button{
-width: 56px;
+font-weight: 600;
+width: 70px;
 display: inline-block;
-margin-top: 20px;
+margin-top: auto;
 padding-bottom: 5px;
-color: #999999;
+color: rgb(170, 220, 218);
 background-color:#fff;
-border-bottom:1px solid  black;
+border-bottom:1px solid  rgb(170, 220, 218);
 }
 `;
 type Props ={
@@ -66,7 +83,7 @@ const TagsSection: React.FC<Props> = (props) => {
                     return <li key={tag.id} onClick={() => {
                         onToggleTags(tag.id)
                     }} className={tagIds.indexOf(tag.id) >= 0 ? 'selected' : ''}>
-                        {tag.name}
+                        <Tag color={colorInit[tag.id%colorInit.length]}>{tag.name}</Tag>
                     </li>
                 })}
             </ul>

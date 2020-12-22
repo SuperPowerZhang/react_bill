@@ -5,6 +5,8 @@ const CategoryUl=styled.ul`
 display: flex;
 font-size: 24px;
 padding: 12px 0;
+background-color:rgba(148, 57, 57,0.6);
+color: white;
 >li{
 width: 50%;
 text-align: center;
@@ -16,7 +18,7 @@ position: absolute;
 top: 36px;
 left: 0;
 content: "";
-border-bottom: 2px solid #333333;
+border-bottom: 2px solid rgb(148, 57, 57);
 width: 100%;
 display: inline-block;
 }}}

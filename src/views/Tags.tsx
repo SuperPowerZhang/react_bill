@@ -6,6 +6,8 @@ import {Center} from '../components/Center';
 import {Link} from "react-router-dom";
 import Nav from "../components/Nav";
 import {Button} from '../components/Button';
+import {Tag} from "antd";
+import {colorInit} from "./colorInit";
 
 const TagList=styled.ul`
 flex-shrink: 1;
@@ -15,9 +17,14 @@ overflow:auto;
 >li a{
 display: flex;
 justify-content:space-between ;
-font-size: 16px;
 padding: 11px 15px;
 border-bottom: 1px solid rgb(221, 221, 224);
+>span{
+border: 0;
+font-size: 16px;
+background-color:transparent;
+padding: 0;
+}
 }
 `;
 const MyLayout=styled(Layout)`
@@ -42,9 +49,9 @@ function Tags() {
                         return (
                             <li key={tag.id}>
                                 <Link to={'/tags/'+tag.id}>
-                                <span className="one-line">
+                                <Tag className="one-line" color={colorInit[tag.id%colorInit.length]}>
                                  {tag.name}
-                                </span>
+                                </Tag>
                                 <svg className="icon" aria-hidden="true">
                                     <use xlinkHref="#icon-jiantouyou"></use>
                                 </svg>

@@ -9,11 +9,12 @@ padding: 20px;
 flex:0;
 background-color:rgb(245, 245, 245);
 >span{
-color:#333333;
+color:rgb(148, 57, 57);
 line-height: 22px;
 }
 >input{
 margin-left: 20px;
+color:rgb(148, 57, 57);
 }
 `;
 type Props={
