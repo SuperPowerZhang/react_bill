@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Layout from "../components/Layout";
 import {useTags} from '../hooks/useTags'
 import styled from "styled-components";
@@ -8,6 +8,19 @@ import Nav from "../components/Nav";
 import {Button} from '../components/Button';
 import {Tag} from "antd";
 import {colorInit} from "./colorInit";
+import {combineReducers, createStore} from 'redux'
+import {Provider, useDispatch, useSelector} from 'react-redux'
+import {tagsReducer} from "../store/reducer";
+import {dispatch} from "jest-circus/build/state";
+import {addTag} from "../store/tagsActions";
+
+const appReducer=combineReducers({tagsReducer});
+type Tag={
+    id:number,name:string
+}
+
+let store=createStore(appReducer)
+console.log(store.getState().tagsReducer)
 
 const TagList=styled.ul`
 flex-shrink: 1;
@@ -35,17 +48,22 @@ justify-content: space-between;
 `;
 
 function Tags() {
-    const {tags,setTags,addTag}=useTags();
+    console.log(store);
+    const tagsReducer:any=store.getState().tagsReducer
+    const tags=tagsReducer.tags
+    console.log(tags)
     const onAddTag=()=>{
-            let newTag=addTag();
-            if(newTag.id!==-1){
-                setTags([...tags, newTag]);
-            }
-        };
+        console.log(11111)
+                store.dispatch(addTag({id:11,name:"haha"}))
+        }
+        useEffect(()=>{
+            console.log('更新了tags们')
+        },tags)
     return(
+        <Provider store={store}>
             <MyLayout>
                 <TagList>
-                    {tags.map((tag) => {
+                    {tags.map((tag:Tag) => {
                         return (
                             <li key={tag.id}>
                                 <Link to={'/tags/'+tag.id}>
@@ -64,6 +82,7 @@ function Tags() {
                 </Center>
                 <Nav/>
             </MyLayout>
+        </Provider>
     )
 }
 
