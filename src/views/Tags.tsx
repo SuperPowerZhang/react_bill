@@ -8,20 +8,15 @@ import Nav from "../components/Nav";
 import {Button} from '../components/Button';
 import {Tag} from "antd";
 import {colorInit} from "./colorInit";
-import {combineReducers, createStore} from 'redux'
-import {Provider, useDispatch, useSelector} from 'react-redux'
-import {tagsReducer} from "../store/reducer";
-import {dispatch} from "jest-circus/build/state";
+import {Provider} from 'react-redux'
 import {addTag} from "../store/tagsActions";
+import {connect} from 'react-redux';
 
-const appReducer=combineReducers({tagsReducer});
+
+
 type Tag={
     id:number,name:string
 }
-
-let store=createStore(appReducer)
-console.log(store.getState().tagsReducer)
-
 const TagList=styled.ul`
 flex-shrink: 1;
 background-color:rgb(255, 255, 255);
@@ -47,20 +42,16 @@ flex-direction: column;
 justify-content: space-between;
 `;
 
-function Tags() {
-    console.log(store);
-    const tagsReducer:any=store.getState().tagsReducer
-    const tags=tagsReducer.tags
-    console.log(tags)
+function Tags({tags,addTag}) {
+
     const onAddTag=()=>{
         console.log(11111)
-                store.dispatch(addTag({id:11,name:"haha"}))
-        }
-        useEffect(()=>{
-            console.log('更新了tags们')
-        },tags)
+        // store.dispatch(addTag({id:11,name:"haha"}))
+    }
+    useEffect(()=>{
+        console.log('更新了tags们')
+    },tags)
     return(
-        <Provider store={store}>
             <MyLayout>
                 <TagList>
                     {tags.map((tag:Tag) => {
