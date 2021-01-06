@@ -8,11 +8,6 @@ import Nav from "../components/Nav";
 import {Button} from '../components/Button';
 import {Tag} from "antd";
 import {colorInit} from "./colorInit";
-import {Provider} from 'react-redux'
-import {addTag} from "../store/tagsActions";
-import {connect} from 'react-redux';
-
-
 
 type Tag={
     id:number,name:string
@@ -42,20 +37,14 @@ flex-direction: column;
 justify-content: space-between;
 `;
 
-function Tags({tags,addTag}) {
-
-    const onAddTag=()=>{
-        console.log(11111)
-        // store.dispatch(addTag({id:11,name:"haha"}))
-    }
-    useEffect(()=>{
-        console.log('更新了tags们')
-    },tags)
+// @ts-ignore
+const Tags=({tags,onAddTag})=> {
+    console.log(onAddTag)
     return(
             <MyLayout>
                 <TagList>
                     {tags.map((tag:Tag) => {
-                        return (
+                   return (
                             <li key={tag.id}>
                                 <Link to={'/tags/'+tag.id}>
                                 <Tag className="one-line" color={colorInit[tag.id%colorInit.length]}>
@@ -73,7 +62,6 @@ function Tags({tags,addTag}) {
                 </Center>
                 <Nav/>
             </MyLayout>
-        </Provider>
     )
 }
 

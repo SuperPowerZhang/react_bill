@@ -1,3 +1,8 @@
 import {createStore} from 'redux'
 
-// let store=createStore
+import tagsReducer from "./reducer";
+
+// @ts-ignore
+let store=createStore(tagsReducer);
+
+export  {store};

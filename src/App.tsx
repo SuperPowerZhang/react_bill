@@ -11,9 +11,9 @@ import Bill from "./views/Bill";
 import Tags from "./views/Tags";
 import NoMatch from "./views/NoMatch";
 import {Tag} from "./views/Tag";
-import {combineReducers, createStore} from "redux";
-import {tagsReducer} from "./store/reducer";
 import {Provider} from "react-redux";
+import {store} from './store/store'
+import TagsDisplay from "./connect/tagsConnect";
 
 const Wrapper=styled.div`
 display: flex;
@@ -23,18 +23,9 @@ background-color:rgb(245, 245, 245);
 `;
 
 
-type Tag={
-    id:number,name:string
-}
-let appReducer=combineReducers({tagsReducer});
-let store=createStore(appReducer)
 const unsubscribe=store.subscribe(()=>{
     console.log('change',store.getState())
 })
-console.log(store.getState().tagsReducer)
-const tagsReducer:any=store.getState().tagsReducer
-const tags=tagsReducer.tags
-console.log(tags)
 function App() {
     return (
         <Provider store={store}>
@@ -42,7 +33,7 @@ function App() {
             <Wrapper>
                 <Switch>
                     <Route exact path="/tags">
-                        <Tags />
+                        <TagsDisplay />
                     </Route>
                     <Route exact path="/tags/:id">
                         <Tag  />
