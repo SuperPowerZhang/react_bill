@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import {useTags} from '../../hooks/useTags';
-import { Tag } from 'antd';
-import {colorInit} from "../colorInit";
+import  {TagAddButton,TagsDisplay2} from '../../connect/tagsConnect'
 
 const TagsWrapper = styled.section`
 display: flex;
@@ -58,15 +56,9 @@ type Props ={
     onChange:(stateNew:object)=>void
 }
 const TagsSection: React.FC<Props> = (props) => {
-    const {tags,setTags,addTag}=useTags();
     const tagIds=props.tagIds;
     const onChange=props.onChange;
-    const onAddTag=()=>{
-        let newTag=addTag();
-        if(newTag.id!==-1){
-            setTags([...tags, newTag]);
-        }
-    };
+    // const {tags,setTags,addTag}=useTags();
     const onToggleTags = (id: number) => {
         const index = tagIds.indexOf(id);
         if (index === -1) {
@@ -78,16 +70,10 @@ const TagsSection: React.FC<Props> = (props) => {
     };
     return (
         <TagsWrapper>
-            <ul>
-                {tags.map((tag) => {
-                    return <li key={tag.id} onClick={() => {
-                        onToggleTags(tag.id)
-                    }} className={tagIds.indexOf(tag.id) >= 0 ? 'selected' : ''}>
-                        <Tag color={colorInit[tag.id%colorInit.length]}>{tag.name}</Tag>
-                    </li>
-                })}
+            <ul onClick={() => { onToggleTags(tag.id)}}>
+            <TagsDisplay2 />
             </ul>
-            <button onClick={onAddTag}>新增标签</button>
+            <TagAddButton />
         </TagsWrapper>
     )
 };

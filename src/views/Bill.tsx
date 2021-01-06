@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import Nav from "../components/Nav";
 import Layout from "../components/Layout";
 import styled from "styled-components";
-import {TagsSection} from './bill/TagsSection'
 import {NotesSection} from './bill/NotesSection';
 import {CategorySection} from './bill/CategorySection';
 import {NumSection} from './bill/NumSection';
 import {useRecords} from "../hooks/useRecords";
+import {TagsSection} from "./bill/TagsSection";
 
 //神奇的styled用法
 const Wrapper=styled.div`

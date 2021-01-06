@@ -12,9 +12,11 @@ const initTags={
 const  tagsReducer =(state=initTags,action:Action)=> {
     switch (action.type) {
         case 'ADD_TAG':
-            let tags=[...state.tags,action.tag]
-            console.log({...state,tags})
-            return {...state,tags}
+            const newTagName=window.prompt('请输入新标签');
+            if (newTagName) {
+                let tags=[...state.tags,{id:createId(),name: newTagName}]
+                return {...state,tags}
+            }
     }
     return state;
 };

@@ -1,6 +1,5 @@
-import React, {useEffect} from "react";
+import React from "react";
 import Layout from "../components/Layout";
-import {useTags} from '../hooks/useTags'
 import styled from "styled-components";
 import {Center} from '../components/Center';
 import {Link} from "react-router-dom";
@@ -8,6 +7,8 @@ import Nav from "../components/Nav";
 import {Button} from '../components/Button';
 import {Tag} from "antd";
 import {colorInit} from "./colorInit";
+import {createId} from "../lib/createId";
+import {TagAddButton} from "../connect/tagsConnect";
 
 type Tag={
     id:number,name:string
@@ -35,11 +36,29 @@ height: 100vh;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+> button{
+background: #767676;
+padding: 8px 16px;
+font-size: 17px;
+border-radius: 4px;
+color: #FFFFFF;
+text-align: center;
+&.save{
+background-color:rgb(184, 225, 222);
+color:rgb(51, 51, 51);
+}
 `;
 
 // @ts-ignore
 const Tags=({tags,onAddTag})=> {
-    console.log(onAddTag)
+    const onClick=()=>{
+        const newTagName=window.prompt('请输入新标签');
+        if (newTagName) {
+            onAddTag({id:createId(),name: newTagName})
+        }else{
+            return;
+        }
+    }
     return(
             <MyLayout>
                 <TagList>
@@ -58,7 +77,7 @@ const Tags=({tags,onAddTag})=> {
                     })}
                 </TagList>
                 <Center>
-                    <Button onClick={onAddTag} className="save">新增标签</Button>
+                    <TagAddButton>新增标签</TagAddButton>
                 </Center>
                 <Nav/>
             </MyLayout>
