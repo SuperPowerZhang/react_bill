@@ -14,8 +14,8 @@
 # 主要功能截图
 
 记一笔
-![avatar](/public/add.png)
+![avatar](/public/add.png =100)
 标签增删改
-![avatar](/public/tag.png)
+![avatar](/public/tag.png =50)
 统计
-![avatar](/public/count.png)
+![avatar](/public/count.png = 60)
